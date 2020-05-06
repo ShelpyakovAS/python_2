@@ -25,3 +25,34 @@
 
 Предприятия, с прибылью ниже среднего значения: Копыта
 """
+
+say_num = int(input('Введите количество предприятий для расчета прибыли: '))
+sum_year_all = 0
+min_sum = ''
+max_sum = ''
+for i in range(1, say_num+1):
+    say_name = input('Введите название предприятия: ')
+    say_money = input('через пробел введите прибыль данного предприятия за каждый квартал(Всего 4 квартала): ')
+    sum_year = say_money.split(' ')
+    sum_year = int(sum_year[0]) + int(sum_year[1]) + int(sum_year[2]) + int(sum_year[3])
+    globals()['company' + str(i)] = (say_name, say_money, sum_year)
+    sum_year_all += sum_year
+
+for i in range(1, say_num+1):
+    if sum_year_all / say_num > globals()['company' + str(i)][2]:
+        min_sum = min_sum + ', ' + (globals()['company' + str(i)][0])
+    else:
+        max_sum = max_sum + ', ' + (globals()['company' + str(i)][0])
+
+
+print(f'Средняя годовая прибыль всех предприятий: {sum_year_all / say_num}')
+print(f'Предприятия, с прибылью выше среднего значения: {max_sum}')
+print(f'Предприятия, с прибылью ниже среднего значения: {min_sum}')
+
+
+
+
+
+
+
+
