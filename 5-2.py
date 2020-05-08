@@ -47,7 +47,3 @@ if k == 1:
 
 num3.reverse()
 print(num3)
-
-
-
-
